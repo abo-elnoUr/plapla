@@ -1,0 +1,84 @@
+<div class="card border-0">
+  <div class="card-header">
+    <h5>اضافة مكتبة</h5>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="createLibraryForm" (ngSubmit)="submit()">
+      <div class="row">
+        <div class="col-md-8 mx-auto">
+          <div class="row">
+
+            <div class="col-md-4">
+              <div class="mb-4">
+                <label for=""> اسم الملف </label>
+                <input class='form-control' type="text" formControlName="Name" />
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="mb-4">
+                <label for="">رقم الملف </label>
+                <input class='form-control' type="number" formControlName="Index" />
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class='mb-4'>
+                <label> الفصل الدراسي</label>
+                <select class='form-control' formControlName="SemesterId">
+                  <option selected disabled [ngValue]="null"> اختر الفصل الدراسي </option>
+                  <option *ngFor="let s of listOfSemsters" [ngValue]="s.semesterId"> {{s.semesterName}} </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <div class='mb-4'>
+                <label> نوع المكتبة </label>
+                <select class='form-control' formControlName="CategoryCode">
+                  <option selected disabled [ngValue]="null"> اختر نوع المكتبة </option>
+                  <option [ngValue]="LibsCategs.Lessons">كتب مدرسية</option>
+                  <option [ngValue]="LibsCategs.Notes">ملخصات و مذكرات</option>
+                  <option [ngValue]="LibsCategs.Exams"> نماذج تدريبية محلولة </option>
+                  <option [ngValue]="LibsCategs.Teacher">تحضيرات المعلم</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <label for="">صورة ملف المكتبة </label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" hidden id="fileImage" (change)="setFileImage($event)">
+                <label class="custom-file-label" for="fileImage">صورة ملف المكتبة</label>
+              </div>
+              <label *ngIf="imageName" class='bg-light p-2 rounded-pill mt-2'> <a (click)="viewImage()"> {{imageName}}</a> <i (click)="removeImage()"
+                  class="fa fa-trash cursor-pointer text-danger mr-2"></i> </label>
+            </div>
+            <div class="col-md-4">
+              <label for="">ملف المكتبة </label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" hidden id="libFile" (change)="setFile($event)">
+                <label class="custom-file-label" for="libFile">ملف المكتبة</label>
+              </div>
+              <label *ngIf="fileName" class='bg-light p-2 rounded-pill mt-2'><a (click)="viewFile()"> {{fileName}} </a> <i (click)="removeFile()"
+                  class="fa fa-trash cursor-pointer text-danger mr-2"></i> </label>
+
+            </div>
+
+
+          </div>
+          <div class="mt-3">
+            <button class="btn btn-primary" type="submit"
+              *ngIf="createLibraryForm.valid && !isSubmiting && createLibraryForm.dirty"> <i class="fa fa-save"></i> حفظ
+              البيانات</button>
+            <button class="btn btn-primary" type="button" disabled
+              *ngIf="createLibraryForm.invalid || isSubmiting || !createLibraryForm.dirty">
+              <i class="fa fa-save"></i> حفظ البيانات
+              <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                *ngIf="isSubmiting"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

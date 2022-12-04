@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-md-6 mx-auto">
+      <div class="card mt-5">
+        <div class="card-header">
+          <h4 class='m-0'> من نحن </h4>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="aboutUsForm" (ngSubmit)="submit()" >
+            <div class="row">
+              <div class="col-md-6">
+                <label> من نحن </label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-question-circle"></i></span>
+                  </div>
+                  <textarea type="text" class="form-control" formControlName="aboutUs"> </textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label> ماذا نقدم </label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-check-square"></i></span>
+                  </div>
+                  <textarea type="text" class="form-control" formControlName="provide"> </textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label>  الشروط والأحكام </label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-shield-alt"></i></span>
+                  </div>
+                  <textarea type="text" class="form-control" formControlName="terms"> </textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label> إجابات </label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fab fa-leanpub"></i></span>
+                  </div>
+                  <textarea type="text" class="form-control" formControlName="egabat"> </textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label> التواصل </label>
+                <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span>
+                  </div>
+                  <input type="text" class="form-control" formControlName="contact">
+                </div>
+              </div>
+
+              <div class="col-md-12 mt-4">
+                <button class="btn btn-primary" type="submit" *ngIf="aboutUsForm.valid && !isSubmiting"> <i
+                    class="fa fa-save"></i> حفظ البيانات</button>
+                <button class="btn btn-primary" type="button" disabled *ngIf="aboutUsForm.invalid || isSubmiting">
+                  <i class="fa fa-save"></i> حفظ البيانات
+                  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"
+                    *ngIf="isSubmiting"></span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  
